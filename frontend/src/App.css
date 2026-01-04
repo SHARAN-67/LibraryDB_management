@@ -1,0 +1,32 @@
+.main-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.app-header {
+  border-bottom: 2px solid #ddd;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+}
+
+.status {
+  color: #555;
+  font-style: italic;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.item-card {
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: #f9f9f9;
+}
