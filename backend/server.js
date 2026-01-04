@@ -9,8 +9,8 @@ app.use(express.json());
 // MongoDB Connection
 const mongoURI = 'mongodb+srv://sharan_db_user:sharan123@cluster0.5csipmr.mongodb.net/?appName=Cluster0';
 mongoose.connect(mongoURI)
-    .then(() => console.log("✅ MongoDB Connected"))
-    .catch(err => console.log("❌ Connection Error: ", err));
+    .then(() => console.log(" MongoDB Connected"))
+    .catch(err => console.log(" Connection Error: ", err));
 
 // Schema
 const bookSchema = new mongoose.Schema({
@@ -68,4 +68,4 @@ app.delete('/api/books', async (req, res) => {
     }
 });
 
-app.listen(5000, () => console.log("🚀 Backend running on http://localhost:5000"));
+app.listen(5000, () => console.log(" Backend running on http://localhost:5000"));
