@@ -77,6 +77,7 @@ app.delete('/api/books', async (req, res) => {
     }
 });
 
+
 // Serve index.html for all other routes (client-side routing)
 app.get('*', (req, res) => {
     res.sendFile(path.join(frontendPath, 'index.html'));
