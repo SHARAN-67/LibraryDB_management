@@ -32,9 +32,19 @@ function App() {
 
   const addBook = async (e) => {
     e.preventDefault();
-    await axios.post(API, formData);
-    fetchBooks();
-    setFormData({ title: '', author: '', category: '', publishedYear: '', availableCopies: 0 });
+    try {
+      const bookData = {
+        ...formData,
+        publishedYear: parseInt(formData.publishedYear),
+        availableCopies: parseInt(formData.availableCopies)
+      };
+      await axios.post(API, bookData);
+      fetchBooks();
+      setFormData({ title: '', author: '', category: '', publishedYear: '', availableCopies: 0 });
+      alert('Book added successfully!');
+    } catch (err) {
+      alert('Error adding book: ' + (err.response?.data?.message || err.message));
+    }
   };
 
   return (
