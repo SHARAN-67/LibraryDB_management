@@ -83,4 +83,9 @@ app.get('*', (req, res) => {
     res.sendFile(path.join(frontendPath, 'index.html'));
 });
 
-app.listen(process.env.PORT || 5000, () => console.log(` Backend running on port ${process.env.PORT || 5000}`));
+export default app;
+
+// Only listen if running locally (not on Vercel)
+if (process.env.NODE_ENV !== 'production') {
+    app.listen(process.env.PORT || 5000, () => console.log(` Backend running on port ${process.env.PORT || 5000}`));
+}
