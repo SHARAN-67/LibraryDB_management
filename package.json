@@ -1,0 +1,10 @@
+{
+  "name": "librarydb",
+  "version": "1.0.0",
+  "description": "Library Database Management System",
+  "scripts": {
+    "build": "npm install && cd frontend && npm install && npm run build",
+    "start": "node backend/server.js"
+  },
+  "dependencies": {}
+}
