@@ -1,16 +1,25 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
+// Serve static files from frontend dist
+const frontendPath = path.join(__dirname, '../frontend/dist');
+app.use(express.static(frontendPath));
+
 // MongoDB Connection
-const mongoURI = 'mongodb+srv://sharan_db_user:sharan123@cluster0.5csipmr.mongodb.net/?appName=Cluster0';
+const mongoURI = process.env.MONGODB_URI || 'mongodb+srv://sharan_db_user:sharan123@cluster0.5csipmr.mongodb.net/?appName=Cluster0';
 mongoose.connect(mongoURI)
-    .then(() => console.log("✅ MongoDB Connected"))
-    .catch(err => console.log("❌ Connection Error: ", err));
+    .then(() => console.log(" MongoDB Connected"))
+    .catch(err => console.log(" Connection Error: ", err));
 
 // Schema
 const bookSchema = new mongoose.Schema({
@@ -68,4 +77,9 @@ app.delete('/api/books', async (req, res) => {
     }
 });
 
-app.listen(5000, () => console.log("🚀 Backend running on http://localhost:5000"));
+// Serve index.html for all other routes (client-side routing)
+app.get('*', (req, res) => {
+    res.sendFile(path.join(frontendPath, 'index.html'));
+});
+
+app.listen(process.env.PORT || 5000, () => console.log(` Backend running on port ${process.env.PORT || 5000}`));
