@@ -6,7 +6,7 @@ function App() {
   const [books, setBooks] = useState([]);
   const [formData, setFormData] = useState({ title: '', author: '', category: '', publishedYear: '', availableCopies: 0 });
 
-  const API = "http://localhost:5000/api/books";
+  const API = import.meta.env.VITE_API_URL || "http://localhost:5000/api/books";
 
   useEffect(() => { fetchBooks(); }, []);
 

@@ -3,7 +3,8 @@
   "outputDirectory": "frontend/dist",
   "framework": "vite",
   "env": {
-    "MONGODB_URI": "mongodb_uri"
+    "MONGODB_URI": "mongodb_uri",
+    "VITE_API_URL": "https://your-vercel-app.vercel.app/api/books"
   },
   "rewrites": [
     {
